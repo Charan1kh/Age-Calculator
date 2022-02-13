@@ -4,7 +4,7 @@ import tkinter as tk
 
 #windowRes
 window = tk.Tk()
-window.geometry("440x520")
+window.geometry("320x440")
 window.title("Age Calc")
 
 #attributes
@@ -42,7 +42,7 @@ def getInput():
     textArea.grid(column=1, row=6)
     reply = " Hello {monkey}!, You're {age} years old ".format(monkey=name, age=monkey.age())
     textArea.insert(tk.END, reply)
-button=tk.Button(window,text = "Calculate Age", command=getInput,bg="pink")
+button=tk.Button(window,text = "Calculate Age", command=getInput,bg="orange")
 button.grid(column=1,row=5)
 class Person:
     def _init__(self,name,birthdate):
