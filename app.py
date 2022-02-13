@@ -1,6 +1,6 @@
 import datetime
 import tkinter as tk
-from PIL import Image, ImageTk
+
 
 #windowRes
 window = tk.Tk()
@@ -11,14 +11,14 @@ window.title("Age Calc")
 name = tk.Label(text = "Name")
 name.grid(column=0,row=1)
 
-name = tk.Label(text = "Year")
-name.grid(column=0,row=2)
+year = tk.Label(text = "Year")
+year.grid(column=0,row=2)
 
-name = tk.Label(text = "Month")
-name.grid(column=0,row=3)
+month = tk.Label(text = "Month")
+month.grid(column=0,row=3)
 
-name = tk.Label(text = "Day")
-name.grid(column=0,row=4)
+date = tk.Label(text = "Day")
+date.grid(column=0,row=4)
 
 #Inputs
 nameEntry = tk.Entry()
@@ -33,20 +33,24 @@ monthEntry.grid(column=1,row=3)
 dateEntry = tk.Entry()
 dateEntry.grid(column=1,row=4)
 
-#fun
+#fun & buttons
 def getInput():
     name=nameEntry.get()
-    user = Person(name,datetime.date(int(yearEntry.get()),
-    int(monthEntry.get()),
-    int(dateEntry.get())))
+    monkey = Person(name, datetime.date(int(yearEntry.get()), int(monthEntry.get()), int(dateEntry.get())))
 
     textArea = tk.Text(master=window,height=15,width=25)
-    textArea.gird(column=1, row=6)
-    reply = "Hello {user}!, You're {age} years old.".format(user=name, age=user.age())
-    textArea.insert(tk.End, reply)
-
-
-
-
+    textArea.grid(column=1, row=6)
+    reply = " Hello {monkey}!, You're {age} years old ".format(monkey=name, age=monkey.age())
+    textArea.insert(tk.END, reply)
+button=tk.Button(window,text = "Calculate Age", command=getInput,bg="pink")
+button.grid(column=1,row=5)
+class Person:
+    def _init__(self,name,birthdate):
+        self.name = name
+        self.birthdate = birthdate
+    def age(self):
+        today = datetime.date.today()
+        age = today.year-self.birthdate.year
+        return age
 
 window.mainloop()
