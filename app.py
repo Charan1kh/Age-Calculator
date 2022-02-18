@@ -10,6 +10,7 @@ window.title("Age Calc")
 #attributes
 name = tk.Label(text = "Name")
 name.grid(column=0,row=1)
+aims
 
 year = tk.Label(text = "Year")
 year.grid(column=0,row=2)
